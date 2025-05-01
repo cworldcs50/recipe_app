@@ -1,0 +1,1 @@
+enum TimerStates { started, finished }
