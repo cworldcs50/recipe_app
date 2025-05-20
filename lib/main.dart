@@ -26,7 +26,7 @@ class RecipeApp extends StatelessWidget {
       child: MaterialApp(
         theme: lightThemeData,
         darkTheme: darkThemeData,
-        themeMode: ThemeMode.dark,
+        themeMode: ThemeMode.light,
         debugShowCheckedModeBanner: false,
         home: BlocBuilder<CachingBloc, bool>(
           builder:

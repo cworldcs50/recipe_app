@@ -17,10 +17,7 @@ ThemeData darkThemeData = ThemeData(
     ),
   ),
   textTheme: TextTheme(
-    bodyLarge: GoogleFonts.poppins(
-      color: AppDarkColors.kTextColor,
-      fontSize: 16,
-    ),
+    bodyLarge: GoogleFonts.poppins(color: Colors.black, fontSize: 16),
     bodyMedium: GoogleFonts.poppins(
       color: AppDarkColors.kTextColor,
       fontSize: 14,

@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../components/select_your_country_component.dart';
+import '../../../../core/utils/constants/app_constants.dart';
 import '../../../../core/theme/app_colors/app_dark_colors.dart';
 import '../../../../core/theme/app_colors/app_light_colors.dart';
-import '../../../../core/utils/constants/app_constants.dart';
+import '../../../../core/services/sevice_locator/app_module.dart';
+import '../controllers/select_your_country_bloc/select_you_country_bloc.dart';
 
 class SelectingCountryView extends StatelessWidget {
   const SelectingCountryView({super.key});
@@ -11,9 +15,8 @@ class SelectingCountryView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20.0),
+        padding: const EdgeInsets.symmetric(horizontal: 10.0),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             const SizedBox(height: 50),
             Text(
@@ -31,47 +34,53 @@ class SelectingCountryView extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 40),
-            Text(
-              AppConstants.kSelectYourCountry,
-              style: GoogleFonts.poppins(
-                textStyle: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                  fontWeight: FontWeight.w600,
-                  fontSize: 20,
-                  color: AppDarkColors.kPurpleColor,
+            Padding(
+              padding: const EdgeInsets.only(right: 130.0),
+              child: Text(
+                AppConstants.kSelectYourCountry,
+                style: GoogleFonts.poppins(
+                  textStyle: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                    fontWeight: FontWeight.w600,
+                    fontSize: 20,
+                    color: AppDarkColors.kPurpleColor,
+                  ),
                 ),
               ),
             ),
             const SizedBox(height: 20),
-            SearchAnchor(
-              suggestionsBuilder: (context, searchController) {
-                return [
-                  CheckboxListTile(
-                    value: true,
-                    onChanged: (value) {},
-                    title: const Text(
-                      "Argentina",
-                      style: TextStyle(color: Colors.white),
-                    ),
+            SizedBox(
+              width: 360,
+              child: TextField(
+                cursorColor: AppDarkColors.kGreyColor,
+                decoration: InputDecoration(
+                  hintText: AppConstants.kEnterYourCoutrysName,
+                  suffixIcon: const Icon(
+                    Icons.search,
+                    color: Colors.redAccent,
+                    size: 50,
                   ),
-                ];
-              },
-              builder: (context, controller) {
-                return TextField(
-                  controller: controller,
-                  decoration: InputDecoration(
-                    hintText: AppConstants.kEnterYourCoutrysName,
-                    suffixIcon: const Icon(
-                      Icons.search,
-                      color: AppDarkColors.kPurpleColor,
-                      size: 55,
-                    ),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    ),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                    borderSide: const BorderSide(width: 0),
                   ),
-                );
-              },
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                    borderSide: const BorderSide(width: 0),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                    borderSide: const BorderSide(width: 0),
+                  ),
+                ),
+              ),
             ),
+            Expanded(
+              child: BlocProvider(
+                create: (context) => sl<SelectYouCountryBloc>(),
+                child: const SelectYourCountryComponent(),
+              ),
+            ),
+            const SizedBox(height: 50),
           ],
         ),
       ),

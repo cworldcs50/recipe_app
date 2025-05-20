@@ -43,5 +43,7 @@ class AppConstants {
   static const String kLoginToYourAccount = "Login to your Account";
   static const String kSettingUpYourKitchen = "Setting up your kitchen...";
   static const String kSelectYourCountry = "Select Your Country";
+  static const String kSelectYourPrefrences = "Select your prefrences";
   static const String kEnterYourCoutrysName = "Enter your country's name";
+  static const String kKitchenImagePath = "assets/images/kitchen.png";
 }

@@ -12,4 +12,5 @@ class AppLightColors {
   static const Color kLinkColor = Color(0xFF00C2FF);
   static const Color kTitle2Color = Color(0XFFF8C89A);
   static const Color kSloganColor = Color(0XFF103C4A);
+  static const Color kKitchenCardColor = Color(0XFFF8C89A);
 }
